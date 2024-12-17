@@ -2,30 +2,29 @@ package com.raulastete.kambio.domain.entity
 
 import java.math.BigDecimal
 
-data class Exchange(
+data class ExchangeTransaction(
     val id: String,
-    val exchangeType: ExchangeType,
     val originAccount: Account,
     val destinationAccount: Account,
-    val originalAmount: AmountCurrency,
-    val changedAmount: AmountCurrency,
-    val exchangeRate: ExchangeRate,
+    val exchangeDetails: ExchangeDetails,
     val exchangeConfirmation: ExchangeConfirmation
 )
 
-data class AmountCurrency(
-    val amount: BigDecimal,
-    val currency: Currency
+data class ExchangeDetails(
+    val exchangeRate: ExchangeRate,
+    val originalAmount: CurrencyAmount,
+    val changedAmount: CurrencyAmount,
+)
+
+data class CurrencyAmount(
+    val currency: Currency,
+    val amount: BigDecimal
 )
 
 data class ExchangeRate(
     val exchangeType: ExchangeType,
-    val exchangeRate: Double
+    val value: Double
 )
-
-enum class ExchangeType {
-    BUY, SELL
-}
 
 data class ExchangeConfirmation(
     val timestamp: Long,

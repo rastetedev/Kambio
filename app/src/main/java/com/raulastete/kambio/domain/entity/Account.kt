@@ -7,11 +7,3 @@ data class Account(
     val accountType: AccountType,
     val currency: Currency
 )
-
-enum class AccountType {
-    SAVING, CHECKING
-}
-
-enum class Currency {
-    DOLLAR, PERUVIAN_SOL
-}
