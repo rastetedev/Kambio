@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import com.raulastete.kambio.presentation.authentication.login.LoginScreen
 import com.raulastete.kambio.ui.theme.KambioTheme
 
 class MainActivity : ComponentActivity() {
@@ -12,7 +13,7 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             KambioTheme {
-
+                LoginScreen()
             }
         }
     }
