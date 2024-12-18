@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="App.Kambio.Starting" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenBackground">#222222</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/kambio_icon</item>
+        <item name="postSplashScreenTheme">@style/Theme.Kambio</item>
+    </style>
+</resources>
