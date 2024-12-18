@@ -85,7 +85,7 @@ fun KambioTextField(
             lineLimits = TextFieldLineLimits.SingleLine,
             cursorBrush = SolidColor(MaterialTheme.colorScheme.onBackground),
             modifier = Modifier
-                .clip(RoundedCornerShape(16.dp))
+                .clip(RoundedCornerShape(8.dp))
                 .background(
                     if (isFocused) {
                         MaterialTheme.colorScheme.primary.copy(
@@ -102,7 +102,7 @@ fun KambioTextField(
                     } else {
                         Color.Transparent
                     },
-                    shape = RoundedCornerShape(16.dp)
+                    shape = RoundedCornerShape(8.dp)
                 )
                 .padding(horizontal = 12.dp, vertical = 12.dp)
                 .onFocusChanged {
