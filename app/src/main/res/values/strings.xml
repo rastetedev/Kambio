@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">Kambio</string>
+    <string name="login">Inicia sesión</string>
+    <string name="email_hint">Escribe tu correo</string>
+    <string name="email_text_input">Correo electrónico</string>
+    <string name="show_password">Muestra la contraseña</string>
+    <string name="hide_password">Oculta la contraseña</string>
+    <string name="password_hint">Escribe tu contraseña</string>
+    <string name="password_text_input">Contraseña</string>
+    <string name="forgot_password_text_button">¿Olvidaste tu contraseña? Recupérala</string>
+    <string name="login_button">Iniciar sesión</string>
+    <string name="register_text_button">¿No tienes cuenta? Registrate aquí</string>
 </resources>
