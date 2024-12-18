@@ -2,6 +2,7 @@ package com.raulastete.kambio.presentation.components
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -67,7 +68,10 @@ fun KambioPasswordTextField(
             horizontalArrangement = Arrangement.SpaceBetween,
         ) {
             if (title != null) {
-                Text(text = title, style = MaterialTheme.typography.labelMedium)
+                Text(
+                    text = title,
+                    style = MaterialTheme.typography.labelMedium.copy(color = MaterialTheme.colorScheme.onBackground)
+                )
             }
         }
         Spacer(modifier = Modifier.height(4.dp))
@@ -91,7 +95,9 @@ fun KambioPasswordTextField(
                             alpha = 0.05f
                         )
                     } else {
-                        MaterialTheme.colorScheme.surface
+                        if (isSystemInDarkTheme())
+                            MaterialTheme.colorScheme.surface
+                        else MaterialTheme.colorScheme.background
                     }
                 )
                 .border(
@@ -99,7 +105,8 @@ fun KambioPasswordTextField(
                     color = if (isFocused) {
                         MaterialTheme.colorScheme.primary
                     } else {
-                        Color.Transparent
+                        if (isSystemInDarkTheme()) Color.Transparent
+                        else MaterialTheme.colorScheme.onSurfaceVariant
                     },
                     shape = RoundedCornerShape(8.dp)
                 )
@@ -129,9 +136,7 @@ fun KambioPasswordTextField(
                         if (state.text.isEmpty() && !isFocused) {
                             Text(
                                 text = hint,
-                                color = MaterialTheme.colorScheme.onSurfaceVariant.copy(
-                                    alpha = 0.4f
-                                ),
+                                color = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.4f),
                                 modifier = Modifier.fillMaxWidth()
                             )
                         }

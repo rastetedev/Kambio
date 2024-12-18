@@ -2,6 +2,7 @@ package com.raulastete.kambio.presentation.components
 
 import android.os.Build
 import androidx.compose.foundation.background
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ColumnScope
@@ -20,7 +21,7 @@ import androidx.compose.ui.unit.dp
 import com.raulastete.kambio.ui.theme.KambioTheme
 
 @Composable
-fun GradientBackground(
+fun ScreenBackground(
     modifier: Modifier = Modifier,
     hasToolbar: Boolean = true,
     content: @Composable ColumnScope.() -> Unit
@@ -45,28 +46,30 @@ fun GradientBackground(
             .fillMaxSize()
             .background(MaterialTheme.colorScheme.background)
     ) {
-        Box(
-            modifier = modifier
-                .fillMaxSize()
-                .then(
-                    if (isAtLeastAndroid12) {
-                        Modifier.blur(smallDimension / 3f)
-                    } else Modifier
-                )
-                .background(
-                    brush = Brush.radialGradient(
-                        colors = listOf(
-                            if (isAtLeastAndroid12) primaryColor else primaryColor.copy(alpha = 0.3f),
-                            MaterialTheme.colorScheme.background
-                        ),
-                        center = Offset(
-                            x = screenWidthPx / 2f,
-                            y = -100f
-                        ),
-                        radius = smallDimensionPx / 2f
-                    )
-                )
-        )
+       if(isSystemInDarkTheme()){
+           Box(
+               modifier = modifier
+                   .fillMaxSize()
+                   .then(
+                       if (isAtLeastAndroid12) {
+                           Modifier.blur(smallDimension / 3f)
+                       } else Modifier
+                   )
+                   .background(
+                       brush = Brush.radialGradient(
+                           colors = listOf(
+                               if (isAtLeastAndroid12) primaryColor else primaryColor.copy(alpha = 0.3f),
+                               MaterialTheme.colorScheme.background
+                           ),
+                           center = Offset(
+                               x = screenWidthPx / 2f,
+                               y = -100f
+                           ),
+                           radius = smallDimensionPx / 2f
+                       )
+                   )
+           )
+       }
 
         Column(
             modifier = Modifier
@@ -88,7 +91,7 @@ fun GradientBackground(
 @Composable
 private fun GradientBackgroundPreview() {
     KambioTheme {
-        GradientBackground(
+        ScreenBackground(
             modifier = Modifier.fillMaxSize()
         ) {
         }
