@@ -7,8 +7,9 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ColumnScope
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.systemBarsPadding
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.blur
@@ -23,7 +24,7 @@ import com.raulastete.kambio.ui.theme.KambioTheme
 @Composable
 fun ScreenBackground(
     modifier: Modifier = Modifier,
-    hasToolbar: Boolean = true,
+    topBar: @Composable () -> Unit = {},
     content: @Composable ColumnScope.() -> Unit
 ) {
     val configuration = LocalConfiguration.current
@@ -41,55 +42,55 @@ fun ScreenBackground(
     val primaryColor = MaterialTheme.colorScheme.primary
     val isAtLeastAndroid12 = Build.VERSION.SDK_INT >= Build.VERSION_CODES.S
 
-    Box(
-        modifier = modifier
-            .fillMaxSize()
-            .background(MaterialTheme.colorScheme.background)
-    ) {
-       if(isSystemInDarkTheme()){
-           Box(
-               modifier = modifier
-                   .fillMaxSize()
-                   .then(
-                       if (isAtLeastAndroid12) {
-                           Modifier.blur(smallDimension / 3f)
-                       } else Modifier
-                   )
-                   .background(
-                       brush = Brush.radialGradient(
-                           colors = listOf(
-                               if (isAtLeastAndroid12) primaryColor else primaryColor.copy(alpha = 0.3f),
-                               MaterialTheme.colorScheme.background
-                           ),
-                           center = Offset(
-                               x = screenWidthPx / 2f,
-                               y = -100f
-                           ),
-                           radius = smallDimensionPx / 2f
-                       )
-                   )
-           )
-       }
-
-        Column(
-            modifier = Modifier
+    Scaffold(
+        topBar = topBar
+    ) { padding ->
+        Box(
+            modifier = modifier
                 .fillMaxSize()
-                .then(
-                    if (hasToolbar) {
-                        Modifier
-                    } else {
-                        Modifier.systemBarsPadding()
-                    }
-                )
+                .background(MaterialTheme.colorScheme.background)
         ) {
-            content()
+            if(isSystemInDarkTheme()){
+                Box(
+                    modifier = modifier
+                        .fillMaxSize()
+                        .then(
+                            if (isAtLeastAndroid12) {
+                                Modifier.blur(smallDimension / 3f)
+                            } else Modifier
+                        )
+                        .background(
+                            brush = Brush.radialGradient(
+                                colors = listOf(
+                                    if (isAtLeastAndroid12) primaryColor else primaryColor.copy(
+                                        alpha = 0.3f
+                                    ),
+                                    MaterialTheme.colorScheme.background
+                                ),
+                                center = Offset(
+                                    x = screenWidthPx / 2f,
+                                    y = -100f
+                                ),
+                                radius = smallDimensionPx / 2f
+                            )
+                        )
+                )
+            }
+
+            Column(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(padding)
+            ) {
+                content()
+            }
         }
     }
 }
 
 @Preview
 @Composable
-private fun GradientBackgroundPreview() {
+private fun ScreenBackgroundPreview() {
     KambioTheme {
         ScreenBackground(
             modifier = Modifier.fillMaxSize()
