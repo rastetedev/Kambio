@@ -1,5 +1,6 @@
 package com.raulastete.kambio.ui.theme
 
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.Font
@@ -38,14 +39,12 @@ val Typography = Typography(
         fontWeight = FontWeight.Light,
         fontSize = 12.sp,
         lineHeight = 20.sp,
-        color = KambioWhiteVariant
     ),
     labelMedium = TextStyle(
         fontFamily = Poppins,
         fontWeight = FontWeight.Light,
         fontSize = 14.sp,
         lineHeight = 22.sp,
-        color = KambioWhiteVariant
     ),
     labelLarge = TextStyle(
         fontFamily = Poppins,
@@ -53,21 +52,18 @@ val Typography = Typography(
         fontSize = 16.sp,
         lineHeight = 24.sp,
         letterSpacing = 0.5.sp,
-        color = KambioWhiteVariant
     ),
     bodySmall = TextStyle(
         fontFamily = Poppins,
         fontWeight = FontWeight.Normal,
         fontSize = 12.sp,
         lineHeight = 20.sp,
-        color = KambioWhiteVariant
     ),
     bodyMedium = TextStyle(
         fontFamily = Poppins,
         fontWeight = FontWeight.Normal,
         fontSize = 14.sp,
         lineHeight = 22.sp,
-        color = KambioWhiteVariant
     ),
     bodyLarge = TextStyle(
         fontFamily = Poppins,
@@ -75,14 +71,12 @@ val Typography = Typography(
         fontSize = 14.sp,
         lineHeight = 22.sp,
         letterSpacing = 0.5.sp,
-        color = KambioWhiteVariant
     ),
     titleSmall = TextStyle(
         fontFamily = Poppins,
         fontWeight = FontWeight.Medium,
         fontSize = 14.sp,
         lineHeight = 22.sp,
-        color = KambioWhiteVariant
     ),
     titleMedium = TextStyle(
         fontFamily = Poppins,
@@ -90,7 +84,6 @@ val Typography = Typography(
         fontSize = 16.sp,
         lineHeight = 24.sp,
         letterSpacing = 0.5.sp,
-        color = KambioWhiteVariant
     ),
     titleLarge = TextStyle(
         fontFamily = Poppins,
@@ -98,14 +91,12 @@ val Typography = Typography(
         fontSize = 20.sp,
         lineHeight = 28.sp,
         letterSpacing = 0.5.sp,
-        color = KambioWhiteVariant
     ),
     headlineSmall = TextStyle(
         fontFamily = Poppins,
         fontWeight = FontWeight.SemiBold,
         fontSize = 14.sp,
         lineHeight = 22.sp,
-        color = KambioWhiteVariant
     ),
     headlineMedium = TextStyle(
         fontFamily = Poppins,
@@ -113,7 +104,6 @@ val Typography = Typography(
         fontSize = 16.sp,
         lineHeight = 24.sp,
         letterSpacing = 0.5.sp,
-        color = KambioWhiteVariant
     ),
     headlineLarge = TextStyle(
         fontFamily = Poppins,
@@ -121,6 +111,5 @@ val Typography = Typography(
         fontSize = 20.sp,
         lineHeight = 28.sp,
         letterSpacing = 0.5.sp,
-        color = KambioWhiteVariant
     )
 )
