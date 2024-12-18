@@ -15,11 +15,12 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.raulastete.kambio.R
-import com.raulastete.kambio.presentation.components.GradientBackground
+import com.raulastete.kambio.presentation.components.ScreenBackground
 import com.raulastete.kambio.presentation.components.KambioPrimaryButton
 import com.raulastete.kambio.presentation.components.KambioPasswordTextField
 import com.raulastete.kambio.presentation.components.KambioTextButton
@@ -38,7 +39,9 @@ fun LoginContent(
     onAction: (LoginAction) -> Unit
 ) {
 
-    GradientBackground {
+    ScreenBackground(
+        hasToolbar = false
+    ) {
         Column(
             Modifier
                 .fillMaxSize()
@@ -49,17 +52,21 @@ fun LoginContent(
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.SpaceBetween
         ) {
-            Spacer(Modifier.height(32.dp))
 
             Image(
                 painter = painterResource(R.drawable.kambio_standalone),
                 modifier = Modifier.size(100.dp),
-                contentDescription = null
+                contentDescription = null,
+                colorFilter = ColorFilter.tint(MaterialTheme.colorScheme.onBackground)
             )
 
             Spacer(Modifier.height(48.dp))
 
-            Text(text = stringResource(R.string.login), style = MaterialTheme.typography.headlineLarge)
+            Text(
+                text = stringResource(R.string.login),
+                style = MaterialTheme.typography.headlineLarge,
+                color = MaterialTheme.colorScheme.onBackground
+            )
 
             Spacer(Modifier.height(32.dp))
 
