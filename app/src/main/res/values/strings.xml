@@ -10,4 +10,13 @@
     <string name="forgot_password_text_button">¿Olvidaste tu contraseña? Recupérala</string>
     <string name="login_button">Iniciar sesión</string>
     <string name="register_text_button">¿No tienes cuenta? Registrate aquí</string>
+
+    <string name="email_confirmation_hint">Escribe de nuevo tu correo</string>
+    <string name="email_confirmation_text_input">Confirmar correo</string>
+    <string name="password_register_text_input">Crea tu contraseña</string>
+    <string name="password_confirmation_hint">Escribe de nuevo tu contraseña</string>
+    <string name="password_confirmation_text_input">Confirmar tu contraseña</string>
+    <string name="register_button">Registrarme</string>
+    <string name="login_text_button">¿Ya tienes cuenta? Ingresa aquí</string>
+    <string name="register_screen">Regístrate</string>
 </resources>
