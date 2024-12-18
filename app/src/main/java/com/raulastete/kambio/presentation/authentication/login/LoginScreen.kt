@@ -39,9 +39,7 @@ fun LoginContent(
     onAction: (LoginAction) -> Unit
 ) {
 
-    ScreenBackground(
-        hasToolbar = false
-    ) {
+    ScreenBackground {
         Column(
             Modifier
                 .fillMaxSize()
@@ -92,7 +90,7 @@ fun LoginContent(
 
             KambioTextButton(
                 text = stringResource(R.string.forgot_password_text_button)
-            ) { onAction(LoginAction.onRecoverPasswordClick) }
+            ) { onAction(LoginAction.OnRecoverPasswordClick) }
 
 
             Spacer(Modifier.weight(1f))
