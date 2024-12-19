@@ -19,4 +19,8 @@
     <string name="register_button">Registrarme</string>
     <string name="login_text_button">¿Ya tienes cuenta? Ingresa aquí</string>
     <string name="register_screen">Regístrate</string>
+
+    <string name="recovery_password_screen">Recupera tu contraseña</string>
+    <string name="recovery_password_header">Te enviaremos un correo para que puedas recuperar tu contraseña.</string>
+    <string name="send_email_button">Enviar email</string>
 </resources>
