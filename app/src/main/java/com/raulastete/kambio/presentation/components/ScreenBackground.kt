@@ -8,9 +8,12 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ColumnScope
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.blur
 import androidx.compose.ui.geometry.Offset
@@ -25,7 +28,7 @@ import com.raulastete.kambio.ui.theme.KambioTheme
 fun ScreenBackground(
     modifier: Modifier = Modifier,
     topBar: @Composable () -> Unit = {},
-    content: @Composable ColumnScope.() -> Unit
+    content: @Composable ColumnScope.() -> Unit,
 ) {
     val configuration = LocalConfiguration.current
     val density = LocalDensity.current
@@ -46,7 +49,7 @@ fun ScreenBackground(
         topBar = topBar
     ) { padding ->
         Box(
-            modifier = modifier
+            modifier = Modifier
                 .fillMaxSize()
                 .background(MaterialTheme.colorScheme.background)
         ) {
@@ -81,6 +84,10 @@ fun ScreenBackground(
                 modifier = Modifier
                     .fillMaxSize()
                     .padding(padding)
+                    .padding(16.dp)
+                    .verticalScroll(rememberScrollState())
+                    .then(modifier),
+                horizontalAlignment = Alignment.CenterHorizontally
             ) {
                 content()
             }

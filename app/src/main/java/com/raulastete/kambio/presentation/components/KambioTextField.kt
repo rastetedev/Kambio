@@ -39,13 +39,13 @@ import androidx.compose.ui.unit.dp
 @Composable
 fun KambioTextField(
     state: TextFieldState,
-    startIcon: ImageVector?,
-    endIcon: ImageVector?,
-    hint: String,
+    hint: String?,
     title: String?,
+    keyboardType: KeyboardType = KeyboardType.Text,
     modifier: Modifier = Modifier,
     error: String? = null,
-    keyboardType: KeyboardType = KeyboardType.Text,
+    startIcon: ImageVector? = null,
+    endIcon: ImageVector? = null,
     additionalInfo: String? = null
 ) {
     var isFocused by remember {
@@ -134,7 +134,7 @@ fun KambioTextField(
                     ) {
                         if (state.text.isEmpty() && !isFocused) {
                             Text(
-                                text = hint,
+                                text = hint ?: "",
                                 color = MaterialTheme.colorScheme.onSurfaceVariant.copy(
                                     alpha = 0.4f
                                 ),
