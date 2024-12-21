@@ -23,4 +23,12 @@
     <string name="recovery_password_screen">Recupera tu contraseña</string>
     <string name="recovery_password_header">Te enviaremos un correo para que puedas recuperar tu contraseña.</string>
     <string name="send_email_button">Enviar email</string>
+
+    <string name="dollar_label">Dólares</string>
+    <string name="peruvian_sol_label">Soles</string>
+    <string name="saving_estimation_header">Ahorro estimado:</string>
+    <string name="start_operation_button">Iniciar operación</string>
+    <string name="insert_discount_code_text_button">Usar un cupón o código</string>
+    <string name="insert_code_header">Ingresa tu cupón</string>
+    <string name="apply_code_button">Aplicar</string>
 </resources>

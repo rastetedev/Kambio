@@ -11,6 +11,7 @@ import androidx.navigation.compose.rememberNavController
 import com.raulastete.kambio.presentation.authentication.login.LoginScreen
 import com.raulastete.kambio.presentation.authentication.recover_password.RecoveryPasswordScreen
 import com.raulastete.kambio.presentation.authentication.register.RegisterScreen
+import com.raulastete.kambio.presentation.home.HomeScreen
 import com.raulastete.kambio.presentation.navigation.Destination
 import com.raulastete.kambio.ui.theme.KambioTheme
 
@@ -39,6 +40,9 @@ class MainActivity : ComponentActivity() {
                             },
                             navigateToRegister = {
                                 navController.navigate(Destination.Registration)
+                            },
+                            navigateToHome = {
+                                navController.navigate(Destination.Home)
                             }
                         )
                     }
@@ -59,6 +63,11 @@ class MainActivity : ComponentActivity() {
                             navigateBack = {
                                 navController.popBackStack()
                             }
+                        )
+                    }
+
+                    composable<Destination.Home> {
+                        HomeScreen(
                         )
                     }
                 }

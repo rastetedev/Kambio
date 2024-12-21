@@ -10,4 +10,6 @@ sealed interface Destination {
     data object Registration : Destination
     @Serializable
     data object RecoverPassword : Destination
+    @Serializable
+    data object Home : Destination
 }

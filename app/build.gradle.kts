@@ -62,6 +62,7 @@ dependencies {
     implementation(libs.androidx.material.icons.extended)
     implementation(libs.androidx.core.splashscreen)
     implementation(libs.androidx.navigation.compose)
+    implementation(libs.androidx.constraintlayout.compose)
 
     implementation(platform(libs.koin.bom))
     implementation(libs.koin.android)
