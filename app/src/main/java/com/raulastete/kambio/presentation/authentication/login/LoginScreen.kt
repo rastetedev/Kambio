@@ -23,15 +23,16 @@ import com.raulastete.kambio.presentation.components.ScreenBackground
 @Composable
 fun LoginScreen(
     navigateToRecoverPassword: () -> Unit,
-    navigateToRegister: () -> Unit
+    navigateToRegister: () -> Unit,
+    navigateToHome: () -> Unit
 ) {
     LoginContent(
         state = LoginState(),
         onAction = {
             when (it) {
-                LoginAction.OnRecoverPasswordClick -> navigateToRecoverPassword()
-                LoginAction.OnRegisterClick -> navigateToRegister()
-                else -> Unit
+                LoginAction.RecoverPasswordClick -> navigateToRecoverPassword()
+                LoginAction.RegisterClick -> navigateToRegister()
+                else -> navigateToHome()
             }
         }
     )
@@ -56,7 +57,7 @@ fun LoginContent(
 
         Text(
             text = stringResource(R.string.login),
-            style = MaterialTheme.typography.headlineLarge,
+            style = MaterialTheme.typography.titleLarge,
             color = MaterialTheme.colorScheme.onBackground
         )
 
@@ -75,14 +76,14 @@ fun LoginContent(
             isPasswordVisible = state.isPasswordVisible,
             hint = stringResource(R.string.password_hint),
             title = stringResource(R.string.password_text_input),
-            onTogglePasswordVisibility = { onAction(LoginAction.OnTogglePasswordVisibility) }
+            onTogglePasswordVisibility = { onAction(LoginAction.TogglePasswordVisibility) }
         )
 
         Spacer(Modifier.height(16.dp))
 
         KambioTextButton(
             text = stringResource(R.string.forgot_password_text_button)
-        ) { onAction(LoginAction.OnRecoverPasswordClick) }
+        ) { onAction(LoginAction.RecoverPasswordClick) }
 
 
         Spacer(Modifier.weight(1f))
@@ -91,7 +92,7 @@ fun LoginContent(
             text = stringResource(R.string.login_button),
             isLoading = state.isLoggingIn,
         ) {
-            onAction(LoginAction.OnLoginClick)
+            onAction(LoginAction.LoginClick)
         }
 
         Spacer(Modifier.height(8.dp))
@@ -99,7 +100,7 @@ fun LoginContent(
         KambioTextButton(
             text = stringResource(R.string.register_text_button)
         ) {
-            onAction(LoginAction.OnRegisterClick)
+            onAction(LoginAction.RegisterClick)
         }
     }
 }

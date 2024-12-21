@@ -1,8 +1,8 @@
 package com.raulastete.kambio.presentation.authentication.login
 
 sealed interface LoginAction {
-    data object OnTogglePasswordVisibility: LoginAction
-    data object OnLoginClick: LoginAction
-    data object OnRegisterClick: LoginAction
-    data object OnRecoverPasswordClick: LoginAction
+    data object TogglePasswordVisibility: LoginAction
+    data object LoginClick: LoginAction
+    data object RegisterClick: LoginAction
+    data object RecoverPasswordClick: LoginAction
 }

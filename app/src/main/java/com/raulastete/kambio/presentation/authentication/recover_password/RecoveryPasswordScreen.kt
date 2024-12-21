@@ -27,7 +27,7 @@ fun RecoveryPasswordScreen(
         state = RecoveryPasswordUiState(),
         onAction = {
             when (it) {
-                RecoveryPasswordAction.OnNavigateBack -> navigateBack()
+                RecoveryPasswordAction.NavigateBack -> navigateBack()
                 else -> Unit
             }
         }
@@ -43,7 +43,7 @@ fun RecoveryPasswordContent(
         topBar = {
             KambioTopBar(
                 navigationIcon = {
-                    IconButton(onClick = { onAction(RecoveryPasswordAction.OnNavigateBack) }) {
+                    IconButton(onClick = { onAction(RecoveryPasswordAction.NavigateBack) }) {
                         Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = null)
                     }
                 },

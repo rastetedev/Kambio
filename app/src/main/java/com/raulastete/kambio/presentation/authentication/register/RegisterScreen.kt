@@ -29,8 +29,8 @@ fun RegisterScreen(
         state = RegisterUiState(),
         onAction = {
             when (it) {
-                RegisterAction.OnNavigateBack -> navigateBack()
-                RegisterAction.OnLoginClick -> navigateToLogin()
+                RegisterAction.NavigateBack -> navigateBack()
+                RegisterAction.LoginClick -> navigateToLogin()
                 else -> Unit
             }
         }
@@ -46,7 +46,7 @@ fun RegisterContent(
         topBar = {
             KambioTopBar(
                 navigationIcon = {
-                    IconButton(onClick = { onAction(RegisterAction.OnNavigateBack) }) {
+                    IconButton(onClick = { onAction(RegisterAction.NavigateBack) }) {
                         Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = null)
                     }
                 },
@@ -76,7 +76,7 @@ fun RegisterContent(
             title = stringResource(R.string.password_register_text_input),
             isPasswordVisible = state.isPasswordVisible,
             onTogglePasswordVisibility = {
-                onAction(RegisterAction.OnTogglePasswordVisibility)
+                onAction(RegisterAction.TogglePasswordVisibility)
             }
         )
 
@@ -88,7 +88,7 @@ fun RegisterContent(
             title = stringResource(R.string.password_confirmation_text_input),
             isPasswordVisible = state.isPasswordVisible,
             onTogglePasswordVisibility = {
-                onAction(RegisterAction.OnTogglePasswordConfirmationVisibility)
+                onAction(RegisterAction.TogglePasswordConfirmationVisibility)
             }
         )
 
@@ -98,7 +98,7 @@ fun RegisterContent(
             text = stringResource(R.string.register_button),
             isLoading = state.isRegistering
         ) {
-            onAction(RegisterAction.OnRegisterClick)
+            onAction(RegisterAction.RegisterClick)
         }
 
         Spacer(Modifier.height(8.dp))
@@ -106,7 +106,7 @@ fun RegisterContent(
         KambioTextButton(
             text = stringResource(R.string.login_text_button)
         ) {
-            onAction(RegisterAction.OnLoginClick)
+            onAction(RegisterAction.LoginClick)
         }
     }
 }
