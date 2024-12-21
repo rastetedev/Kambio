@@ -33,24 +33,18 @@ val Poppins = FontFamily(
 
 // Set of Material typography styles to start with
 val Typography = Typography(
-    labelSmall = TextStyle(
+
+    labelMedium = TextStyle(
         fontFamily = Poppins,
         fontWeight = FontWeight.Light,
         fontSize = 12.sp,
         lineHeight = 20.sp,
     ),
-    labelMedium = TextStyle(
+    labelLarge = TextStyle(
         fontFamily = Poppins,
         fontWeight = FontWeight.Light,
         fontSize = 14.sp,
         lineHeight = 22.sp,
-    ),
-    labelLarge = TextStyle(
-        fontFamily = Poppins,
-        fontWeight = FontWeight.Light,
-        fontSize = 16.sp,
-        lineHeight = 24.sp,
-        letterSpacing = 0.5.sp,
     ),
     bodySmall = TextStyle(
         fontFamily = Poppins,
@@ -67,15 +61,14 @@ val Typography = Typography(
     bodyLarge = TextStyle(
         fontFamily = Poppins,
         fontWeight = FontWeight.Normal,
-        fontSize = 14.sp,
-        lineHeight = 22.sp,
-        letterSpacing = 0.5.sp,
+        fontSize = 16.sp,
+        lineHeight = 24.sp,
     ),
     titleSmall = TextStyle(
         fontFamily = Poppins,
         fontWeight = FontWeight.Medium,
-        fontSize = 14.sp,
-        lineHeight = 22.sp,
+        fontSize = 12.sp,
+        lineHeight = 20.sp,
     ),
     titleMedium = TextStyle(
         fontFamily = Poppins,
@@ -88,27 +81,18 @@ val Typography = Typography(
         fontFamily = Poppins,
         fontWeight = FontWeight.Medium,
         fontSize = 20.sp,
-        lineHeight = 28.sp,
-        letterSpacing = 0.5.sp,
+        lineHeight = 28.sp
     ),
-    headlineSmall = TextStyle(
+    displaySmall = TextStyle(
         fontFamily = Poppins,
-        fontWeight = FontWeight.SemiBold,
-        fontSize = 14.sp,
-        lineHeight = 22.sp,
+        fontWeight = FontWeight.Bold,
+        fontSize = 10.sp,
+        lineHeight = 18.sp,
     ),
-    headlineMedium = TextStyle(
+    displayMedium = TextStyle(
         fontFamily = Poppins,
-        fontWeight = FontWeight.SemiBold,
-        fontSize = 16.sp,
-        lineHeight = 24.sp,
-        letterSpacing = 0.5.sp,
+        fontWeight = FontWeight.Bold,
+        fontSize = 12.sp,
+        lineHeight = 20.sp,
     ),
-    headlineLarge = TextStyle(
-        fontFamily = Poppins,
-        fontWeight = FontWeight.SemiBold,
-        fontSize = 20.sp,
-        lineHeight = 28.sp,
-        letterSpacing = 0.5.sp,
-    )
 )
