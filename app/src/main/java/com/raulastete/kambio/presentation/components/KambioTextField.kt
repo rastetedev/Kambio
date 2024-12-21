@@ -64,16 +64,16 @@ fun KambioTextField(
             if (title != null) {
                 Text(
                     text = title,
-                    style = MaterialTheme.typography.labelMedium.copy(color = MaterialTheme.colorScheme.onBackground)
+                    style = MaterialTheme.typography.labelLarge.copy(color = MaterialTheme.colorScheme.onBackground)
                 )
             }
             if (error != null) {
                 Text(
                     text = error,
-                    style = MaterialTheme.typography.labelSmall.copy(color = MaterialTheme.colorScheme.error)
+                    style = MaterialTheme.typography.labelMedium.copy(color = MaterialTheme.colorScheme.error)
                 )
             } else if (additionalInfo != null) {
-                Text(text = additionalInfo, style = MaterialTheme.typography.labelSmall)
+                Text(text = additionalInfo, style = MaterialTheme.typography.labelMedium)
             }
         }
         Spacer(modifier = Modifier.height(4.dp))
@@ -110,7 +110,7 @@ fun KambioTextField(
                     },
                     shape = RoundedCornerShape(8.dp)
                 )
-                .padding(horizontal = 12.dp, vertical = 12.dp)
+                .padding(12.dp)
                 .onFocusChanged {
                     isFocused = it.isFocused
                 },

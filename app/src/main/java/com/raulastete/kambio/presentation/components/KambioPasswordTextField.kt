@@ -70,7 +70,7 @@ fun KambioPasswordTextField(
             if (title != null) {
                 Text(
                     text = title,
-                    style = MaterialTheme.typography.labelMedium.copy(color = MaterialTheme.colorScheme.onBackground)
+                    style = MaterialTheme.typography.labelLarge.copy(color = MaterialTheme.colorScheme.onBackground)
                 )
             }
         }
