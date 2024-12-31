@@ -17,6 +17,7 @@ import com.raulastete.kambio.presentation.components.KambioPrimaryButton
 import com.raulastete.kambio.presentation.components.KambioTextField
 import com.raulastete.kambio.presentation.components.KambioTopBar
 import com.raulastete.kambio.presentation.components.ScreenBackground
+import com.raulastete.kambio.ui.theme.KambioTheme
 
 @Composable
 fun RecoveryPasswordScreen(
@@ -76,8 +77,10 @@ fun RecoveryPasswordContent(
 @Preview
 @Composable
 fun RecoveryPasswordContentPreview() {
-    RecoveryPasswordContent(
-        state = RecoveryPasswordUiState(),
-        onAction = {}
-    )
+    KambioTheme {
+        RecoveryPasswordContent(
+            state = RecoveryPasswordUiState(),
+            onAction = {}
+        )
+    }
 }

@@ -18,6 +18,7 @@ import com.raulastete.kambio.presentation.components.KambioTextButton
 import com.raulastete.kambio.presentation.components.KambioTextField
 import com.raulastete.kambio.presentation.components.KambioTopBar
 import com.raulastete.kambio.presentation.components.ScreenBackground
+import com.raulastete.kambio.ui.theme.KambioTheme
 
 @Composable
 fun RegisterScreen(
@@ -114,8 +115,10 @@ fun RegisterContent(
 @Preview
 @Composable
 fun RegisterContentPreview() {
-    RegisterContent(
-        state = RegisterUiState(),
-        onAction = {}
-    )
+    KambioTheme {
+        RegisterContent(
+            state = RegisterUiState(),
+            onAction = {}
+        )
+    }
 }

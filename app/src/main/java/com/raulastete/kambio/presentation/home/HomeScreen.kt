@@ -38,6 +38,7 @@ import com.raulastete.kambio.presentation.components.ScreenBackground
 import com.raulastete.kambio.presentation.home.components.CurrencyAmountInput
 import com.raulastete.kambio.presentation.home.components.CurrencyAmountInputModel
 import com.raulastete.kambio.presentation.home.components.ExchangeRateButton
+import com.raulastete.kambio.ui.theme.KambioTheme
 import java.math.BigDecimal
 
 @Composable
@@ -109,7 +110,7 @@ fun HomeContent(
                         currency = Currency.Dollar,
                         amount = BigDecimal.valueOf(300)
                     ),
-                    title = "¿Cuánto envías?"
+                    title = stringResource(R.string.send_currency_amount_input_label)
                 )
             )
 
@@ -124,7 +125,7 @@ fun HomeContent(
                         currency = Currency.PeruvianSol,
                         amount = BigDecimal.valueOf(300)
                     ),
-                    title = "Entonces recibes"
+                    title = stringResource(R.string.receive_currency_amount_input_label)
                 )
             )
 
@@ -214,8 +215,10 @@ private fun SwitchExchangeButton(
 @Preview
 @Composable
 fun HomeContentPreview() {
-    HomeContent(
-        state = HomeUiState(),
-        onAction = {}
-    )
+    KambioTheme {
+        HomeContent(
+            state = HomeUiState(),
+            onAction = {}
+        )
+    }
 }

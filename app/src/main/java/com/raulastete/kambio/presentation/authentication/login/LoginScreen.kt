@@ -12,6 +12,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.raulastete.kambio.R
 import com.raulastete.kambio.presentation.components.KambioPasswordTextField
@@ -19,6 +20,7 @@ import com.raulastete.kambio.presentation.components.KambioPrimaryButton
 import com.raulastete.kambio.presentation.components.KambioTextButton
 import com.raulastete.kambio.presentation.components.KambioTextField
 import com.raulastete.kambio.presentation.components.ScreenBackground
+import com.raulastete.kambio.ui.theme.KambioTheme
 
 @Composable
 fun LoginScreen(
@@ -102,5 +104,16 @@ fun LoginContent(
         ) {
             onAction(LoginAction.RegisterClick)
         }
+    }
+}
+
+@Preview
+@Composable
+private fun LoginContentPreview() {
+    KambioTheme {
+        LoginContent(
+            state = LoginState(),
+            onAction = {}
+        )
     }
 }
