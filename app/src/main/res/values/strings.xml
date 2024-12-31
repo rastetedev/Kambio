@@ -31,4 +31,6 @@
     <string name="insert_discount_code_text_button">Usar un cupón o código</string>
     <string name="insert_code_header">Ingresa tu cupón</string>
     <string name="apply_code_button">Aplicar</string>
+    <string name="send_currency_amount_input_label">¿Cuánto envías?</string>
+    <string name="receive_currency_amount_input_label">Entonces recibes</string>
 </resources>
