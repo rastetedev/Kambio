@@ -1,34 +1,32 @@
 package com.raulastete.kambio.domain.usecase
 
 import com.raulastete.kambio.domain.entity.Currency
-import com.raulastete.kambio.domain.entity.CurrencyAmount
-import com.raulastete.kambio.domain.entity.ExchangeRate
+import com.raulastete.kambio.domain.value.CurrencyAmount
 import com.raulastete.kambio.domain.entity.ExchangeType
+import com.raulastete.kambio.domain.repository.ExchangeRateRepository
 
-class ConvertAmountCurrencies() {
+class ConvertAmountCurrencies(
+    private val exchangeRateRepository: ExchangeRateRepository,
+    private val getExchangeFactorForCurrencies: GetExchangeFactorForCurrencies
+) {
 
     suspend operator fun invoke(
-        currencyAmount: CurrencyAmount,
-        exchangeRate: ExchangeRate
+        originCurrencyAmount: CurrencyAmount,
+        destinationCurrency: Currency,
+        exchangeType: ExchangeType
     ): CurrencyAmount {
 
-        return when (exchangeRate.exchangeType) {
-            ExchangeType.BUY -> {
-                check(currencyAmount.currency == Currency.PeruvianSol)
-                val amountToReceive =
-                    currencyAmount.amount.div(exchangeRate.value.toBigDecimal())
-                CurrencyAmount(amount = amountToReceive, currency = Currency.Dollar)
-            }
+        check(originCurrencyAmount.currency != destinationCurrency)
 
-            ExchangeType.SELL -> {
-                check(currencyAmount.currency == Currency.Dollar)
-                val amountToReceive =
-                    currencyAmount.amount.multiply(exchangeRate.value.toBigDecimal())
-                CurrencyAmount(amount = amountToReceive, currency = Currency.PeruvianSol)
-            }
-        }
+        val exchangeFactor = getExchangeFactorForCurrencies(
+            originCurrencyAmount.currency,
+            destinationCurrency,
+            exchangeType
+        )
+
+        return CurrencyAmount(
+            currency = destinationCurrency,
+            amount = exchangeFactor.multiply(originCurrencyAmount.amount)
+        )
     }
 }
-
-//Comprar Dolares:  Pago en soles, recibo dolares.  Los soles los divido con el tipo de cambio
-//Vender Dolares: Pago en dolares, recibo soles. LOs dolares los multiplico con el tipo de cambio
