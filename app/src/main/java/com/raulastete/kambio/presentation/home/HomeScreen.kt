@@ -1,5 +1,6 @@
 package com.raulastete.kambio.presentation.home
 
+import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.background
@@ -29,7 +30,7 @@ import androidx.compose.ui.unit.dp
 import androidx.constraintlayout.compose.ConstraintLayout
 import com.raulastete.kambio.R
 import com.raulastete.kambio.domain.entity.Currency
-import com.raulastete.kambio.domain.entity.CurrencyAmount
+import com.raulastete.kambio.domain.value.CurrencyAmount
 import com.raulastete.kambio.domain.entity.ExchangeType
 import com.raulastete.kambio.presentation.components.KambioPrimaryButton
 import com.raulastete.kambio.presentation.components.KambioTextButton
@@ -39,17 +40,17 @@ import com.raulastete.kambio.presentation.home.components.CurrencyAmountInput
 import com.raulastete.kambio.presentation.home.components.CurrencyAmountInputModel
 import com.raulastete.kambio.presentation.home.components.ExchangeRateButton
 import com.raulastete.kambio.ui.theme.KambioTheme
+import org.koin.compose.viewmodel.koinViewModel
 import java.math.BigDecimal
 
 @Composable
 fun HomeScreen(
-
+    homeViewModel: HomeViewModel = koinViewModel(),
 ) {
+    val state = homeViewModel.state
     HomeContent(
-        state = HomeUiState(),
-        onAction = {
-
-        }
+        state = state,
+        onAction = homeViewModel::onAction
     )
 }
 
@@ -63,18 +64,22 @@ fun HomeContent(
 
         Row {
             ExchangeRateButton(
-                label = "Compra",
+                label = stringResource(R.string.buying_label),
                 amount = "3.729",
-                isSelected = true
-            ) { }
+                isSelected = state.exchangeType.isBuy
+            ) {
+                onAction(HomeAction.ChangeExchangeType)
+            }
 
             Spacer(Modifier.width(32.dp))
 
             ExchangeRateButton(
-                label = "Venta",
+                label = stringResource(R.string.selling_label),
                 amount = "3.729",
-                isSelected = false
-            ) { }
+                isSelected = state.exchangeType.isSell
+            ) {
+                onAction(HomeAction.ChangeExchangeType)
+            }
         }
 
         Spacer(Modifier.height(16.dp))
@@ -145,17 +150,23 @@ fun HomeContent(
 
         Spacer(Modifier.height(8.dp))
 
-        KambioTextButton(text = stringResource(R.string.insert_discount_code_text_button)) { }
+        KambioTextButton(text = stringResource(R.string.insert_discount_code_text_button)) {
+            onAction(HomeAction.ShowCouponCode)
+        }
 
         Spacer(Modifier.height(8.dp))
 
-        KambioTextFieldWithButton(
-            state = TextFieldState(),
-            buttonText = stringResource(R.string.apply_code_button),
-            isLoading = false,
-            title = stringResource(R.string.insert_code_header),
-            hint = null
-        ) { }
+        AnimatedVisibility(visible = state.showCouponCodeInput) {
+            KambioTextFieldWithButton(
+                state = TextFieldState(),
+                buttonText = stringResource(R.string.apply_code_button),
+                isLoading = false,
+                title = stringResource(R.string.insert_code_header),
+                hint = null
+            ) {
+                onAction(HomeAction.SendCouponCode)
+            }
+        }
 
         Spacer(Modifier.weight(1f))
 
@@ -163,7 +174,7 @@ fun HomeContent(
             text = stringResource(R.string.start_operation_button),
             isLoading = false
         ) {
-
+            onAction(HomeAction.StartOperation)
         }
     }
 }

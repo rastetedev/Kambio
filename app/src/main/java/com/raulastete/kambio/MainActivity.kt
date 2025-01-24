@@ -69,6 +69,8 @@ class MainActivity : ComponentActivity() {
                     composable<Destination.Home> {
                         HomeScreen(
                         )
+                        HomeScreen()
+                    }
                     }
                 }
             }

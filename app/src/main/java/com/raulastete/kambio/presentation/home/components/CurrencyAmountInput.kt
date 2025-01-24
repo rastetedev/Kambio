@@ -2,7 +2,6 @@ package com.raulastete.kambio.presentation.home.components
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.IntrinsicSize
@@ -14,8 +13,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.foundation.text.BasicTextField
-import androidx.compose.foundation.text.input.TextFieldState
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -26,15 +23,14 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.focus.onFocusChanged
-import androidx.compose.ui.graphics.SolidColor
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.raulastete.kambio.R
 import com.raulastete.kambio.domain.entity.Currency
-import com.raulastete.kambio.domain.entity.CurrencyAmount
+import com.raulastete.kambio.domain.value.CurrencyAmount
+import com.raulastete.kambio.presentation.components.KambioCurrencyTextField
 
 @Composable
 fun CurrencyAmountInput(
@@ -51,12 +47,7 @@ fun CurrencyAmountInput(
                 color = MaterialTheme.colorScheme.surface,
                 shape = RoundedCornerShape(8.dp)
             )
-            .border(
-                width = 1.dp,
-                color = if(isFocus) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.onSurface,
-                shape = RoundedCornerShape(8.dp)
-            )
-
+            
     ) {
         Column(
             modifier = Modifier
@@ -81,13 +72,8 @@ fun CurrencyAmountInput(
                     color = MaterialTheme.colorScheme.onBackground
                 )
 
-                BasicTextField(
-                    modifier = Modifier.onFocusChanged {
-                        isFocus = it.isFocused
-                    },
-                    state = TextFieldState(),
-                    cursorBrush = SolidColor(MaterialTheme.colorScheme.onBackground),
-                    textStyle = MaterialTheme.typography.bodyMedium.copy(color = MaterialTheme.colorScheme.onBackground)
+                KambioCurrencyTextField(
+                    onFocusChanged = { isFocus = it },
                 )
             }
         }
@@ -114,6 +100,7 @@ fun CurrencyAmountInput(
                     .clip(RoundedCornerShape(8.dp)),
                 contentDescription = null
             )
+
             Spacer(Modifier.width(16.dp))
         }
     }
