@@ -12,4 +12,6 @@ sealed interface Destination {
     data object RecoverPassword : Destination
     @Serializable
     data object Home : Destination
+    @Serializable
+    data object TransactionValidation : Destination
 }

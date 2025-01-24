@@ -33,4 +33,17 @@
     <string name="apply_code_button">Aplicar</string>
     <string name="send_currency_amount_input_label">¿Cuánto envías?</string>
     <string name="receive_currency_amount_input_label">Entonces recibes</string>
+
+    <string name="summary_step">Completa</string>
+    <string name="destination_account_info_step">Transfiere</string>
+    <string name="validation_step">Constancia</string>
+
+    <string name="transaction_validation_screen">Envía tu constancia</string>
+    <string name="operation_code_hint">Escribe el código</string>
+    <string name="operation_code_header">Escribe el número de operación del banco aquí</string>
+    <string name="operation_code_footer">Verificaremos tu operación para depositar %1$s a tu cuenta</string>
+    <string name="operation_detail_text_button">Detalle de tu operación</string>
+    <string name="send_operation_code_button">Envía tu constancia</string>
+    <string name="buying_label">Compra</string>
+    <string name="selling_label">Venta</string>
 </resources>
