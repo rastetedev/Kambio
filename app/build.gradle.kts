@@ -72,4 +72,7 @@ dependencies {
     implementation(libs.koin.coroutines)
     implementation(libs.koin.compose.viewmodel)
     implementation(libs.koin.navigation)
+
+    implementation(libs.timber)
+
 }
