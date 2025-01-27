@@ -29,8 +29,6 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.constraintlayout.compose.ConstraintLayout
 import com.raulastete.kambio.R
-import com.raulastete.kambio.domain.entity.Currency
-import com.raulastete.kambio.domain.value.CurrencyAmount
 import com.raulastete.kambio.domain.entity.ExchangeType
 import com.raulastete.kambio.presentation.components.KambioPrimaryButton
 import com.raulastete.kambio.presentation.components.KambioTextButton
@@ -41,7 +39,7 @@ import com.raulastete.kambio.presentation.home.components.CurrencyAmountInputMod
 import com.raulastete.kambio.presentation.home.components.ExchangeRateButton
 import com.raulastete.kambio.ui.theme.KambioTheme
 import org.koin.compose.viewmodel.koinViewModel
-import java.math.BigDecimal
+import java.util.Locale
 
 @Composable
 fun HomeScreen(
@@ -66,7 +64,7 @@ fun HomeContent(
             ExchangeRateButton(
                 label = stringResource(R.string.buying_label),
                 amount = "3.729",
-                isSelected = state.exchangeType.isBuy
+                isSelected = state.exchangeType.isBuy()
             ) {
                 onAction(HomeAction.ChangeExchangeType)
             }
@@ -76,7 +74,7 @@ fun HomeContent(
             ExchangeRateButton(
                 label = stringResource(R.string.selling_label),
                 amount = "3.729",
-                isSelected = state.exchangeType.isSell
+                isSelected = state.exchangeType.isSell()
             ) {
                 onAction(HomeAction.ChangeExchangeType)
             }
@@ -93,7 +91,7 @@ fun HomeContent(
                 style = MaterialTheme.typography.titleSmall
             )
             Text(
-                state.savingEstimation,
+                "${state.exchangeType.savingEstimationCurrency.symbol} ${String.format(Locale.getDefault(), "%.2f", state.savingAmount)}",
                 style = MaterialTheme.typography.bodyMedium
             )
         }
@@ -111,12 +109,13 @@ fun HomeContent(
                     end.linkTo(parent.end)
                 },
                 model = CurrencyAmountInputModel(
-                    currencyAmount = CurrencyAmount(
-                        currency = Currency.Dollar,
-                        amount = BigDecimal.valueOf(300)
-                    ),
+                    currency = state.exchangeType.originCurrency,
+                    amount = state.originAmount,
                     title = stringResource(R.string.send_currency_amount_input_label)
-                )
+                ),
+                onValueChange = {
+                    onAction(HomeAction.UpdateOriginAmount(it))
+                }
             )
 
             CurrencyAmountInput(
@@ -126,16 +125,17 @@ fun HomeContent(
                     end.linkTo(topCurrencyAmountInput.end)
                 },
                 model = CurrencyAmountInputModel(
-                    currencyAmount = CurrencyAmount(
-                        currency = Currency.PeruvianSol,
-                        amount = BigDecimal.valueOf(300)
-                    ),
-                    title = stringResource(R.string.receive_currency_amount_input_label)
-                )
+                    currency = state.exchangeType.destinationCurrency,
+                    amount = state.destinationAmount,
+                    title = stringResource(R.string.receive_currency_amount_input_label),
+                ),
+                onValueChange = {
+                    onAction(HomeAction.UpdateDestinationAmount(it))
+                }
             )
 
             SwitchExchangeButton(
-                exchangeType = ExchangeType.BUY,
+                exchangeType = state.exchangeType,
                 modifier = Modifier.constrainAs(switchExchangeTypeButton) {
                     top.linkTo(topCurrencyAmountInput.top)
                     bottom.linkTo(bottomCurrencyAmountInput.bottom)
@@ -143,7 +143,7 @@ fun HomeContent(
                     start.linkTo(parent.start, margin = 24.dp)
                 }
             ) {
-
+                onAction(HomeAction.ChangeExchangeType)
             }
 
         }
@@ -187,7 +187,7 @@ private fun SwitchExchangeButton(
 ) {
 
     val buttonIconDegrees by animateFloatAsState(
-        if (exchangeType.isBuy) 0f else 360f,
+        if (exchangeType.isSell()) 0f else 360f,
         animationSpec = tween(500)
     )
 
