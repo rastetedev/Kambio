@@ -4,6 +4,7 @@ import com.raulastete.kambio.domain.entity.Currency
 import com.raulastete.kambio.domain.entity.ExchangeType
 import com.raulastete.kambio.domain.repository.ExchangeRateRepository
 import java.math.BigDecimal
+import java.math.RoundingMode
 
 class GetExchangeFactorForCurrencies(
     private val exchangeRateRepository: ExchangeRateRepository
@@ -28,7 +29,7 @@ class GetExchangeFactorForCurrencies(
         }
 
         if (originExchangeRate != null && destinationExchangeRate != null) {
-            return originExchangeRate.value.div(destinationExchangeRate.value)
+            return originExchangeRate.value.divide(destinationExchangeRate.value,  2, RoundingMode.CEILING)
         }
 
         throw IllegalStateException("Origin or destination currency not found")
