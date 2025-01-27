@@ -3,10 +3,9 @@ package com.raulastete.kambio.domain.usecase
 import com.raulastete.kambio.domain.entity.Currency
 import com.raulastete.kambio.domain.value.CurrencyAmount
 import com.raulastete.kambio.domain.entity.ExchangeType
-import com.raulastete.kambio.domain.repository.ExchangeRateRepository
+import java.math.BigDecimal
 
 class ConvertAmountCurrencies(
-    private val exchangeRateRepository: ExchangeRateRepository,
     private val getExchangeFactorForCurrencies: GetExchangeFactorForCurrencies
 ) {
 
@@ -14,19 +13,16 @@ class ConvertAmountCurrencies(
         originCurrencyAmount: CurrencyAmount,
         destinationCurrency: Currency,
         exchangeType: ExchangeType
-    ): CurrencyAmount {
+    ): BigDecimal {
 
         check(originCurrencyAmount.currency != destinationCurrency)
 
         val exchangeFactor = getExchangeFactorForCurrencies(
             originCurrencyAmount.currency,
             destinationCurrency,
-            exchangeType
+             exchangeType
         )
 
-        return CurrencyAmount(
-            currency = destinationCurrency,
-            amount = exchangeFactor.multiply(originCurrencyAmount.amount)
-        )
+        return exchangeFactor.multiply(originCurrencyAmount.amount)
     }
 }
