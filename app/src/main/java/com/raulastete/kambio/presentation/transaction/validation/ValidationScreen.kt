@@ -28,10 +28,10 @@ import com.raulastete.kambio.presentation.transaction.components.Step
 import com.raulastete.kambio.presentation.transaction.components.StepLine
 
 @Composable
-fun TransactionValidationScreen(
+fun ValidationScreen(
     navigateBack: () -> Unit
 ) {
-    TransactionValidationContent(
+    ValidationContent(
         onAction = {
 
         }
@@ -39,15 +39,15 @@ fun TransactionValidationScreen(
 }
 
 @Composable
-fun TransactionValidationContent(
-    onAction: (TransactionValidationAction) -> Unit
+fun ValidationContent(
+    onAction: (ValidationAction) -> Unit
 ) {
 
     ScreenBackground(
         topBar = {
             KambioTopBar(
                 navigationIcon = {
-                    IconButton(onClick = { onAction(TransactionValidationAction.NavigateBack) }) {
+                    IconButton(onClick = { onAction(ValidationAction.NavigateBack) }) {
                         Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = null)
                     }
                 },
