@@ -13,7 +13,7 @@ import com.raulastete.kambio.presentation.authentication.recover_password.Recove
 import com.raulastete.kambio.presentation.authentication.register.RegisterScreen
 import com.raulastete.kambio.presentation.home.HomeScreen
 import com.raulastete.kambio.presentation.navigation.Destination
-import com.raulastete.kambio.presentation.transaction.validation.TransactionValidationScreen
+import com.raulastete.kambio.presentation.transaction.validation.ValidationScreen
 import com.raulastete.kambio.ui.theme.KambioTheme
 
 class MainActivity : ComponentActivity() {
@@ -72,7 +72,7 @@ class MainActivity : ComponentActivity() {
                     }
 
                     composable<Destination.TransactionValidation>{
-                        TransactionValidationScreen {
+                        ValidationScreen {
 
                         }
                     }
